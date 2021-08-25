@@ -38,7 +38,7 @@ export class DataProcessor {
         return { spams: this.spams, hams: this.hams };
     }
 
-    private static buildData(dbText: string) {
+    public static buildData(dbText: string) {
         const buildedData: DataInterface[] = [];
 
         dbText.split('\n').forEach(data => {

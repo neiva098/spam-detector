@@ -1,14 +1,38 @@
 import { DataProcessor } from './Data';
+import NaiveBayesClassifier from './MachineLearning';
 import { Reader } from './utils/Reader';
 
 const main = () => {
-    const textFile = Reader.getData('static/SMSSpamCollection');
+    const db = new Reader('static/SMSSpamCollection', Number(process.argv[2]));
 
-    const data = new DataProcessor(textFile);
+    const trainData = db.getTrain();
+    const testData = db.getTest();
 
-    data.getSpams().forEach(email => console.log(email));
+    const dataProcessor = new DataProcessor(trainData);
+    dataProcessor.buildVocabulary();
 
-    data.getHams().forEach(email => console.log(email));
+    const classifier = new NaiveBayesClassifier(dataProcessor);
+
+    classifier.fit();
+    classifier.setPriorHam();
+    classifier.setPriorSpam();
+
+    const emails = DataProcessor.buildData(testData);
+
+    for (let i = 0; i < emails.length; i++) {
+        classifier.predict(
+            emails[i].words.join(' '),
+            emails[i].type,
+            emails[i].words,
+        );
+    }
+
+    classifier.printConfusionMatrix();
+
+    console.log(`Accuracy measure:  ${classifier.getAccuracy()}`);
+    console.log(`Precision measure:  ${classifier.getPrecision()}`);
+    console.log(`recall measure:    ${classifier.getRecall()}`);
+    console.log(`f1-measure:        ${classifier.getF1Measure()}`);
 };
 
 main();
