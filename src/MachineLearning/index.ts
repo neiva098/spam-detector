@@ -2,8 +2,6 @@ import { DataProcessor } from '../Data';
 import { EmailClassifications, PredictionLabel } from '../Data/interfaces';
 
 export default class NaiveBayesClassifier {
-    private errors = 0;
-    private acertos = 0;
     private PriorH: number = 0.0;
     private PriorS: number = 0.0;
     private S_True_Positive: number = 0;
@@ -167,9 +165,6 @@ export default class NaiveBayesClassifier {
         `;
 
         console.log(message);
-
-        console.log(`Erros: ${this.errors}`);
-        console.log(`Acertos: ${this.acertos}`);
 
         return message;
     }
