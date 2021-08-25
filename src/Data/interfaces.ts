@@ -10,3 +10,8 @@ export enum EmailClassifications {
     SPAM = 'spam',
     HAM = 'ham',
 }
+
+export enum PredictionLabel {
+    RIGHT = 'right',
+    WRONG = 'wrong',
+}
