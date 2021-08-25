@@ -33,7 +33,11 @@ export class DataProcessor {
     }
 
     private setData(dataArray: DataInterface[]) {
-        dataArray.forEach(data => this.pushEmail(data));
+        dataArray.forEach(data => {
+            this.pushEmail(data);
+            this.recordWordsCount(data.words);
+            this.updateWordFrequencyInClass(data.words, data.type);
+        });
 
         return { spams: this.spams, hams: this.hams };
     }
