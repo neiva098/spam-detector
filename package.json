@@ -4,6 +4,7 @@
   "description": "spam-detector",
   "main": "dist/index.js",
   "scripts": {
+    "start": "sucrase-node src/index.ts",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'sucrase-node' src/index.ts"
   },
   "repository": {
