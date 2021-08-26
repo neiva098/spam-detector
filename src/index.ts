@@ -29,10 +29,10 @@ const main = () => {
 
     classifier.printConfusionMatrix();
 
-    console.log(`Accuracy measure:  ${classifier.getAccuracy()}`);
-    console.log(`Precision measure:  ${classifier.getPrecision()}`);
-    console.log(`recall measure:    ${classifier.getRecall()}`);
-    console.log(`f1-measure:        ${classifier.getF1Measure()}`);
+    console.log(`Accuracy measure:  ${classifier.getAccuracy().toFixed(2)}`);
+    console.log(`Precision measure:  ${classifier.getPrecision().toFixed(2)}`);
+    console.log(`recall measure:    ${classifier.getRecall().toFixed(2)}`);
+    console.log(`f1-measure:        ${classifier.getF1Measure().toFixed(2)}`);
 };
 
 main();
