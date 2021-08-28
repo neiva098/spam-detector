@@ -153,15 +153,15 @@ export default class NaiveBayesClassifier {
     }
 
     public printConfusionMatrix() {
-        console.log('          CONFUSION_MATRIX         ');
+        console.log('          Matriz de confusão         ');
 
         const message = `
-        +-----------------------+----------------------+
-        |   (Predicted) SPAM    |   (Predicted) HAM    |
-        +------------------+-----------------------+----------------------+"
-        | (Actual) SPAM         |          "${this.S_True_Positive}"         |         "${this.S_False_Negative}"           |
-        |  (Actual) HAM         |          "${this.H_False_Positive}"         |         "${this.H_True_Negative}"         |
-        +------------------+-----------------------+----------------------+
+        -------------------------------------------------------------------
+        |   (Previsto) SPAM    |   (Previsto) HAM     |
+        -------------------------------------------------------------------"
+        | (Atual) SPAM         |          ${this.S_True_Positive}         |         ${this.S_False_Negative}
+        | (Atual) HAM          |          ${this.H_False_Positive}         |         ${this.H_True_Negative}
+        -------------------------------------------------------------------
         `;
 
         console.log(message);
